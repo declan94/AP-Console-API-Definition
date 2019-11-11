@@ -1,0 +1,377 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample Petstore server.  You can find \nout more about Swagger at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n",
+    "version" : "1.0.0",
+    "title" : "Autopilot Console API",
+    "termsOfService" : "http://swagger.io/terms/",
+    "contact" : {
+      "email" : "apiteam@swagger.io"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath" : "/api/v2",
+  "tags" : [ {
+    "name" : "production",
+    "description" : "Autopilot App Group"
+  }, {
+    "name" : "topic",
+    "description" : "Autopilot Topics"
+  }, {
+    "name" : "audience",
+    "description" : "Autopilot Audiences"
+  } ],
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/topics" : {
+      "get" : {
+        "tags" : [ "topic" ],
+        "summary" : "Query topics brief info",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "fields to return (seperated by comma \",\")",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Topics found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/TopicBrief"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/topics/{topic_id}" : {
+      "get" : {
+        "tags" : [ "topic" ],
+        "summary" : "Get specific topic's detail",
+        "parameters" : [ {
+          "name" : "topic_id",
+          "in" : "path",
+          "description" : "topic id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "fields to return (seperated by comma \",\")",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "RTOT Topic found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Topic"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
+    "/topic/rtot" : {
+      "get" : {
+        "tags" : [ "topic" ],
+        "summary" : "Get RTOT Topic",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "RTOT Topic found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Topic"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "No RTOT Topic"
+          }
+        }
+      }
+    },
+    "/topic/strategy/interval" : {
+      "get" : {
+        "tags" : [ "topic" ],
+        "summary" : "Get Interval Strategy Topic",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Interval Strategy Topic found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Topic"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not found"
+          }
+        }
+      }
+    },
+    "/topic/strategy/action" : {
+      "get" : {
+        "tags" : [ "topic" ],
+        "summary" : "Get Action Strategy Topic",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Interval Strategy Topic found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Topic"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not found"
+          }
+        }
+      }
+    },
+    "/audiences" : {
+      "get" : {
+        "tags" : [ "audience" ],
+        "summary" : "Query audiences brief info",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "fields to return (seperated by comma \",\")",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Audiences found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AudienceBrief"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/audiences/{audience_id}" : {
+      "put" : {
+        "summary" : "Update audience",
+        "description" : "Note that when `archived` is set, other fields should NOT be set. We only do archive or unarchive operation on this audience in this case.",
+        "tags" : [ "audience" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "audience_id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/AudienceUpdate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Audiences Updated",
+            "schema" : {
+              "$ref" : "#/definitions/AudienceBrief"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden. The user don't have access or the audience cannot be archived for it has running topics.",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "running_topics" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/definitions/TopicBrief"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "petstore_auth" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "http://petstore.swagger.io/oauth/dialog",
+      "flow" : "implicit",
+      "scopes" : {
+        "write:pets" : "modify pets in your account",
+        "read:pets" : "read your pets"
+      }
+    },
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "TopicBrief" : {
+      "type" : "object",
+      "properties" : {
+        "topic_id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "inactive", "running", "completed" ]
+        },
+        "archived" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "Topic" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/Topic"
+      }, {
+        "properties" : {
+          "description" : {
+            "type" : "string"
+          },
+          "variations" : {
+            "type" : "object"
+          },
+          "events" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object"
+            }
+          },
+          "goals" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object"
+            }
+          }
+        }
+      } ]
+    },
+    "AudienceBrief" : {
+      "type" : "object",
+      "properties" : {
+        "audience_id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "values" : {
+          "type" : "object"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "archived" : {
+          "type" : "boolean"
+        },
+        "analysis_schedule" : {
+          "type" : "object"
+        }
+      }
+    },
+    "AudienceUpdate" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "archived" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "Production" : {
+      "type" : "object",
+      "properties" : {
+        "autopilot_id" : {
+          "type" : "integer"
+        }
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Find out more about Swagger",
+    "url" : "http://swagger.io"
+  }
+}
