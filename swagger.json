@@ -70,11 +70,6 @@
           "description" : "topic id",
           "required" : true,
           "type" : "string"
-        }, {
-          "name" : "fields",
-          "in" : "query",
-          "description" : "fields to return (seperated by comma \",\")",
-          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -181,6 +176,42 @@
           },
           "404" : {
             "description" : "Not found"
+          }
+        }
+      }
+    },
+    "/rules" : {
+      "get" : {
+        "tags" : [ "rule" ],
+        "summary" : "Get Rule Config List",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "audience_ids",
+          "required" : true,
+          "in" : "query",
+          "type" : "string",
+          "description" : "comma separated"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Rule Config List Found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Rule"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
           }
         }
       }
@@ -368,6 +399,29 @@
           "type" : "integer"
         }
       }
+    },
+    "Rule" : {
+      "type" : "object",
+      "properties" : {
+        "audience_id" : {
+          "type" : "string"
+        },
+        "rule_id" : {
+          "type" : "string"
+        },
+        "topic_id" : {
+          "type" : "string"
+        },
+        "variations" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object"
+          }
+        }
+      }
+    },
+    "Variation" : {
+      "type" : "object"
     }
   },
   "externalDocs" : {
