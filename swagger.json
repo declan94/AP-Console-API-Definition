@@ -28,6 +28,62 @@
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "paths" : {
+    "/production" : {
+      "get" : {
+        "tags" : [ "production" ],
+        "summary" : "Query production info",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Production info returned",
+            "schema" : {
+              "$ref" : "#/definitions/Production"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/apps" : {
+      "get" : {
+        "tags" : [ "production" ],
+        "summary" : "Query apps info",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "get_sample_ratio",
+          "in" : "query",
+          "description" : "get sample ratio of each app",
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Apps info returned",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/RegisteredApp"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
     "/topics" : {
       "get" : {
         "tags" : [ "topic" ],
@@ -183,7 +239,7 @@
     "/rules" : {
       "get" : {
         "tags" : [ "rule" ],
-        "summary" : "Get Rule Config List",
+        "summary" : "Get Rule List",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -191,20 +247,56 @@
           "required" : true,
           "type" : "integer"
         }, {
-          "name" : "audience_ids",
+          "name" : "topic_id",
           "required" : true,
           "in" : "query",
-          "type" : "string",
-          "description" : "comma separated"
+          "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Rule Config List Found",
+            "description" : "Rule List Found",
             "schema" : {
               "type" : "array",
               "items" : {
                 "$ref" : "#/definitions/Rule"
               }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
+    "/rules/{audience_id}" : {
+      "get" : {
+        "tags" : [ "rule" ],
+        "summary" : "Get Rule of an Audience",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "audience_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Rule Found",
+            "schema" : {
+              "$ref" : "#/definitions/Rule"
             }
           },
           "403" : {
@@ -231,6 +323,16 @@
           "in" : "query",
           "description" : "fields to return (seperated by comma \",\")",
           "type" : "string"
+        }, {
+          "name" : "support_local",
+          "in" : "query",
+          "description" : "filter by whether audience support local topic",
+          "type" : "boolean"
+        }, {
+          "name" : "archived",
+          "in" : "query",
+          "description" : "filter by whether audience is archived",
+          "type" : "boolean"
         } ],
         "responses" : {
           "200" : {
@@ -249,6 +351,35 @@
       }
     },
     "/audiences/{audience_id}" : {
+      "get" : {
+        "summary" : "Get specific audience",
+        "tags" : [ "audience" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "audience_id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fields",
+          "in" : "query",
+          "description" : "fields to return (seperated by comma \",\")",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Audience found",
+            "schema" : {
+              "$ref" : "#/definitions/AudienceBrief"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      },
       "put" : {
         "summary" : "Update audience",
         "description" : "Note that when `archived` is set, other fields should NOT be set. We only do archive or unarchive operation on this audience in this case.",
@@ -373,6 +504,9 @@
         "archived" : {
           "type" : "boolean"
         },
+        "analysis_switch" : {
+          "type" : "boolean"
+        },
         "analysis_schedule" : {
           "type" : "object"
         }
@@ -397,6 +531,68 @@
       "properties" : {
         "autopilot_id" : {
           "type" : "integer"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "testratio" : {
+          "type" : "string"
+        },
+        "sample_ratio" : {
+          "type" : "number"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "events" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object"
+          }
+        },
+        "goals" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object"
+          }
+        },
+        "locales" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "available_locales" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "support_mode_analytics" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "RegisteredApp" : {
+      "type" : "object",
+      "properties" : {
+        "registered_id" : {
+          "type" : "string"
+        },
+        "bundle_id" : {
+          "type" : "string"
+        },
+        "platform" : {
+          "type" : "string"
+        },
+        "internal_name" : {
+          "type" : "string"
+        },
+        "sample_ratio" : {
+          "type" : "number"
         }
       }
     },
