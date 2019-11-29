@@ -278,6 +278,67 @@
         }
       }
     },
+    "/testset/{testset_id}" : {
+      "get" : {
+        "tags" : [ "rule" ],
+        "summary" : "Get a Testset for specified topic_id and testset_id",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "name" : "cases",
+          "required" : false,
+          "in" : "query",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "name" : "case_summary",
+          "required" : false,
+          "in" : "query",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "name" : "audience",
+          "required" : false,
+          "in" : "query",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "name" : "extra_info",
+          "required" : false,
+          "in" : "query",
+          "type" : "boolean",
+          "default" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Testset Found",
+            "schema" : {
+              "$ref" : "#/definitions/Segment"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
     "/testsets" : {
       "get" : {
         "tags" : [ "rule" ],
