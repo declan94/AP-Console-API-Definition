@@ -398,6 +398,41 @@
         }
       }
     },
+    "/segments" : {
+      "get" : {
+        "tags" : [ "testset" ],
+        "summary" : "Get Segments for specified topic_id",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Testset List Found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Segment"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
     "/audiences" : {
       "get" : {
         "tags" : [ "audience" ],
