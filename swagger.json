@@ -327,7 +327,7 @@
           "200" : {
             "description" : "Testset Found",
             "schema" : {
-              "$ref" : "#/definitions/Segment"
+              "$ref" : "#/definitions/Testset"
             }
           },
           "403" : {
@@ -385,7 +385,7 @@
             "schema" : {
               "type" : "array",
               "items" : {
-                "$ref" : "#/definitions/Segment"
+                "$ref" : "#/definitions/Testset"
               }
             }
           },
