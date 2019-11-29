@@ -380,7 +380,7 @@
           }
         }
       },
-      "put" : {
+      "patch" : {
         "summary" : "Update audience",
         "description" : "Note that when `archived` is set, other fields should NOT be set. We only do archive or unarchive operation on this audience in this case.",
         "tags" : [ "audience" ],
