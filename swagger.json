@@ -239,7 +239,7 @@
     "/rules" : {
       "get" : {
         "tags" : [ "rule" ],
-        "summary" : "Get Rule List",
+        "summary" : "Get Rule List for specified topic_ids and audience_ids",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -247,10 +247,17 @@
           "required" : true,
           "type" : "integer"
         }, {
-          "name" : "topic_id",
+          "name" : "topic_ids",
           "required" : true,
           "in" : "query",
-          "type" : "string"
+          "type" : "string",
+          "description" : "comma separated"
+        }, {
+          "name" : "audience_ids",
+          "required" : true,
+          "in" : "query",
+          "type" : "string",
+          "description" : "comma separated"
         } ],
         "responses" : {
           "200" : {
@@ -260,43 +267,6 @@
               "items" : {
                 "$ref" : "#/definitions/Rule"
               }
-            }
-          },
-          "403" : {
-            "description" : "Forbidden"
-          },
-          "404" : {
-            "description" : "Not Found"
-          }
-        }
-      }
-    },
-    "/rules/{audience_id}" : {
-      "get" : {
-        "tags" : [ "rule" ],
-        "summary" : "Get Rule of an Audience",
-        "parameters" : [ {
-          "name" : "autopilot_id",
-          "in" : "query",
-          "description" : "autopilot id",
-          "required" : true,
-          "type" : "integer"
-        }, {
-          "name" : "topic_id",
-          "required" : true,
-          "in" : "query",
-          "type" : "string"
-        }, {
-          "name" : "audience_id",
-          "required" : true,
-          "in" : "path",
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Rule Found",
-            "schema" : {
-              "$ref" : "#/definitions/Rule"
             }
           },
           "403" : {
