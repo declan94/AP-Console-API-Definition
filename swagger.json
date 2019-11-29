@@ -280,7 +280,7 @@
     },
     "/testset/{testset_id}" : {
       "get" : {
-        "tags" : [ "rule" ],
+        "tags" : [ "testset" ],
         "summary" : "Get a Testset for specified topic_id and testset_id",
         "parameters" : [ {
           "name" : "autopilot_id",
@@ -341,7 +341,7 @@
     },
     "/testsets" : {
       "get" : {
-        "tags" : [ "rule" ],
+        "tags" : [ "testset" ],
         "summary" : "Get Testsets for specified topic_id",
         "parameters" : [ {
           "name" : "autopilot_id",
