@@ -493,9 +493,9 @@
         }
       }
     },
-    "/rtot_popup/integration_test" : {
+    "/rtot_popup/testsets/{testset_id}/integration_test" : {
       "get" : {
-        "tags" : [ "rtot_popup" ],
+        "tags" : [ "rtot_popup", "testset" ],
         "summary" : "Query integration result of specified testset_id belonging to the RTOT topic with specified topic_id",
         "parameters" : [ {
           "name" : "autopilot_id",
@@ -511,7 +511,7 @@
           "type" : "string"
         }, {
           "name" : "testset_id",
-          "in" : "query",
+          "in" : "path",
           "description" : "testset id",
           "required" : true,
           "type" : "string"
