@@ -118,7 +118,7 @@
     },
     "/topics/text_rtot" : {
       "get" : {
-        "tags" : [ "topic" ],
+        "tags" : [ "topic", "text_rtot" ],
         "summary" : "Query topics that support TextRTOT",
         "parameters" : [ {
           "name" : "autopilot_id",
@@ -456,6 +456,39 @@
           },
           "404" : {
             "description" : "Not Found"
+          }
+        }
+      }
+    },
+    "/text_rtot/test" : {
+      "get" : {
+        "tags" : [ "text_rtot" ],
+        "summary" : "Query TextRTOT Test",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilt_id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "query",
+          "description" : "topic_id of a topic which supports TextRTOT",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Test found",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "403" : {
+            "description" : "Forbbiden"
+          },
+          "404" : {
+            "description" : "Not found"
           }
         }
       }
