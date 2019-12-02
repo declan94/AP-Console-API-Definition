@@ -463,7 +463,7 @@
     "/text_rtot/tests" : {
       "get" : {
         "tags" : [ "text_rtot" ],
-        "summary" : "Query TextRTOT Test List",
+        "summary" : "Query TextRTOT supported topic",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -496,7 +496,7 @@
         }
       }
     },
-    "/rtot_popup/testsets/{testset_id}/integration_test" : {
+    "/testsets/rtot_popup/{testset_id}/integration_test" : {
       "get" : {
         "tags" : [ "rtot_popup", "testset" ],
         "summary" : "Query integration result of specified testset_id belonging to the RTOT topic with specified topic_id",
