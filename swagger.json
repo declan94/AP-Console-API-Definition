@@ -467,13 +467,13 @@
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
-          "description" : "autopilt_id",
+          "description" : "autopilt id",
           "required" : true,
           "type" : "integer"
         }, {
           "name" : "topic_id",
           "in" : "query",
-          "description" : "topic_id of a topic which supports TextRTOT",
+          "description" : "topic id of a topic which supports TextRTOT",
           "required" : true,
           "type" : "string"
         } ],
@@ -486,6 +486,45 @@
           },
           "403" : {
             "description" : "Forbbiden"
+          },
+          "404" : {
+            "description" : "Not found"
+          }
+        }
+      }
+    },
+    "/rtot_popup/integration_test" : {
+      "get" : {
+        "tags" : [ "rtot_popup" ],
+        "summary" : "Query integration result of specified testset_id belonging to the RTOT topic with specified topic_id",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "query",
+          "description" : "topic id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "in" : "query",
+          "description" : "testset id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Integreation test result found",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
           },
           "404" : {
             "description" : "Not found"
