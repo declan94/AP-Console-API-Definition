@@ -143,6 +143,36 @@
         }
       }
     },
+    "/topics/text_rtot/{topic_id}" : {
+      "get" : {
+        "tags" : [ "topic", "text_rtot" ],
+        "summary" : "Query topics that support TextRTOT",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "path",
+          "description" : "topic id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Topic found",
+            "schema" : {
+              "$ref" : "#/definitions/TextRTOTTopicBrief"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
     "/topics/{topic_id}" : {
       "get" : {
         "tags" : [ "topic" ],
