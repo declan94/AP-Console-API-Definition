@@ -854,6 +854,9 @@
     },
     "Testset" : {
       "type" : "object"
+    },
+    "TestRTOTTest" : {
+      "type" : "object"
     }
   },
   "externalDocs" : {
