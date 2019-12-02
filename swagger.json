@@ -460,10 +460,10 @@
         }
       }
     },
-    "/text_rtot/test" : {
+    "/text_rtot/tests" : {
       "get" : {
         "tags" : [ "text_rtot" ],
-        "summary" : "Query TextRTOT Test",
+        "summary" : "Query TextRTOT Test List",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -481,7 +481,10 @@
           "200" : {
             "description" : "Test found",
             "schema" : {
-              "type" : "object"
+              "type" : "array",
+              "items" : {
+                "type" : "object"
+              }
             }
           },
           "403" : {
