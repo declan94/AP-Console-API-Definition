@@ -266,14 +266,9 @@
           "name" : "body",
           "in" : "body",
           "required" : true,
-          "description" : "json-patch, see http://jsonpatch.com/",
+          "description" : "only updates included fields",
           "schema" : {
-            "type" : "object",
-            "properties" : {
-              "patches" : {
-                "$ref" : "#/definitions/PatchRequest"
-              }
-            }
+            "type" : "object"
           }
         } ],
         "responses" : {
