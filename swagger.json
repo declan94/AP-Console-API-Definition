@@ -114,6 +114,26 @@
             "description" : "Forbidden"
           }
         }
+      },
+      "post" : {
+        "tags" : [ "topic" ],
+        "summary" : "Create topics",
+        "responses" : {
+          "200" : {
+            "description" : "Succeeded",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "topic_id" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/topics/text_rtot" : {
