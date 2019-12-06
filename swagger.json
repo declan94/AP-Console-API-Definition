@@ -266,7 +266,7 @@
           "name" : "body",
           "in" : "body",
           "required" : true,
-          "description" : "json-patch",
+          "description" : "json-patch, see http://jsonpatch.com/",
           "schema" : {
             "$ref" : "#/definitions/PatchRequest"
           }
@@ -981,7 +981,7 @@
       }
     },
     "PatchDocument" : {
-      "description" : "A JSONPatch document as defined by RFC 6902",
+      "description" : "A JSONPatch document as defined by RFC 6902, see http://jsonpatch.com/",
       "required" : [ "op", "path" ],
       "properties" : {
         "op" : {
