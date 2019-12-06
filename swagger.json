@@ -117,21 +117,37 @@
       },
       "post" : {
         "tags" : [ "topic" ],
-        "summary" : "Create topics",
+        "summary" : "Create a topic.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        } ],
+        "body" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
-            "description" : "Succeeded",
+            "description" : "Topic created",
             "schema" : {
-              "type" : "array",
-              "items" : {
-                "type" : "object",
-                "properties" : {
-                  "topic_id" : {
-                    "type" : "string"
-                  }
+              "type" : "object",
+              "properties" : {
+                "topic_id" : {
+                  "type" : "string"
                 }
               }
             }
+          },
+          "403" : {
+            "description" : "Forbidden"
           }
         }
       }
