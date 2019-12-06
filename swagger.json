@@ -161,6 +161,38 @@
             "description" : "Forbidden"
           }
         }
+      },
+      "patch" : {
+        "tags" : [ "topic" ],
+        "summary" : "Updates a new topic (partially).",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic",
+          "in" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Topic updated",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "topic_id" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
       }
     },
     "/topics/text_rtot" : {
