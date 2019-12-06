@@ -123,17 +123,28 @@
           "type" : "integer",
           "in" : "query",
           "required" : true
-        } ],
-        "body" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "type" : "object"
+        }, {
+          "name" : "topic",
+          "in" : "body",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "name", "type", "description", "duration" ],
+            "properties" : {
+              "name" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "duration" : {
+                "type" : "string"
               }
             }
           }
-        },
+        } ],
         "responses" : {
           "200" : {
             "description" : "Topic created",
