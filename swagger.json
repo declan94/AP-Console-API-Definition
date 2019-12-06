@@ -268,7 +268,12 @@
           "required" : true,
           "description" : "json-patch, see http://jsonpatch.com/",
           "schema" : {
-            "$ref" : "#/definitions/PatchRequest"
+            "type" : "object",
+            "properties" : {
+              "patches" : {
+                "$ref" : "#/definitions/PatchRequest"
+              }
+            }
           }
         } ],
         "responses" : {
