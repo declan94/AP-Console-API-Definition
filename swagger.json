@@ -161,38 +161,6 @@
             "description" : "Forbidden"
           }
         }
-      },
-      "patch" : {
-        "tags" : [ "topic" ],
-        "summary" : "Updates a new topic (partially).",
-        "parameters" : [ {
-          "name" : "autopilot_id",
-          "type" : "integer",
-          "in" : "query",
-          "required" : true
-        }, {
-          "name" : "topic",
-          "in" : "body",
-          "schema" : {
-            "type" : "object"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Topic updated",
-            "schema" : {
-              "type" : "object",
-              "properties" : {
-                "topic_id" : {
-                  "type" : "string"
-                }
-              }
-            }
-          },
-          "403" : {
-            "description" : "Forbidden"
-          }
-        }
       }
     },
     "/topics/text_rtot" : {
@@ -278,6 +246,45 @@
           },
           "404" : {
             "description" : "Not Found"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "topic" ],
+        "summary" : "Updates a new topic (partially).",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "description" : "json-patch",
+          "schema" : {
+            "$ref" : "#/definitions/PatchRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Topic updated",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "topic_id" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
           }
         }
       }
@@ -966,6 +973,35 @@
     },
     "TestRTOTTest" : {
       "type" : "object"
+    },
+    "PatchRequest" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/PatchDocument"
+      }
+    },
+    "PatchDocument" : {
+      "description" : "A JSONPatch document as defined by RFC 6902",
+      "required" : [ "op", "path" ],
+      "properties" : {
+        "op" : {
+          "type" : "string",
+          "description" : "The operation to be performed",
+          "enum" : [ "add", "remove", "replace", "move", "copy", "test" ]
+        },
+        "path" : {
+          "type" : "string",
+          "description" : "A JSON-Pointer"
+        },
+        "value" : {
+          "type" : "object",
+          "description" : "The value to be used within the operations."
+        },
+        "from" : {
+          "type" : "string",
+          "description" : "A string containing a JSON Pointer value."
+        }
+      }
     }
   },
   "externalDocs" : {
