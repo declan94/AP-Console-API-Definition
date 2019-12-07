@@ -251,7 +251,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Updates a new topic (partially).",
+        "summary" : "Partially updates a topic, only updates the requested fields.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -268,7 +268,21 @@
           "required" : true,
           "description" : "only updates included fields",
           "schema" : {
-            "type" : "object"
+            "type" : "object",
+            "properties" : {
+              "name" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "duration" : {
+                "type" : "string"
+              }
+            }
           }
         } ],
         "responses" : {
