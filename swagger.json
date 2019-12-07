@@ -267,7 +267,9 @@
           "in" : "body",
           "required" : true,
           "description" : "only updates included fields",
-          "schema" : null
+          "schema" : {
+            "type" : "object"
+          }
         } ],
         "responses" : {
           "200" : {
