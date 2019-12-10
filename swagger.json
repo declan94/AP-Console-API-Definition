@@ -251,7 +251,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Updates a topic.",
+        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
