@@ -504,6 +504,122 @@
         }
       }
     },
+    "/topics/{topic_id}/variations" : {
+      "post" : {
+        "tags" : [ "topic" ],
+        "summary" : "Create a Variation for specified Topic.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "name" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "default" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Variation created"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/topics/{topic_id}/variations/{variation_name}" : {
+      "patch" : {
+        "tags" : [ "topic" ],
+        "summary" : "Partially update a Variation",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "variation_name",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Variation updated"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "topic" ],
+        "summary" : "Delete a Variation",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "variation_name",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Variation deleted"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
     "/rules" : {
       "get" : {
         "tags" : [ "rule" ],
