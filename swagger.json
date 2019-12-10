@@ -276,10 +276,13 @@
               "description" : {
                 "type" : "string"
               },
-              "type" : {
+              "duration" : {
                 "type" : "string"
               },
-              "duration" : {
+              "status" : {
+                "type" : "string"
+              },
+              "integration_test_status" : {
                 "type" : "string"
               }
             }
