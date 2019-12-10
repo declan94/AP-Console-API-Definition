@@ -502,6 +502,34 @@
             "description" : "Forbidden"
           }
         }
+      },
+      "delete" : {
+        "tags" : [ "topic" ],
+        "summary" : "Delete an Event",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "event_name",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Event deleted"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
       }
     },
     "/topics/{topic_id}/variations" : {
@@ -613,6 +641,116 @@
         "responses" : {
           "200" : {
             "description" : "Variation deleted"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/topics/{topic_id}/goals" : {
+      "post" : {
+        "tags" : [ "topic" ],
+        "summary" : "Create a Goal for specified Topic.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "name" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Goal created"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/topics/{topic_id}/goals/{goal_name}" : {
+      "patch" : {
+        "tags" : [ "topic" ],
+        "summary" : "Partially update a Goal",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "goal_name",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Goal updated"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "topic" ],
+        "summary" : "Delete a Goal",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "goal_name",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Goal deleted"
           },
           "403" : {
             "description" : "Forbidden"
