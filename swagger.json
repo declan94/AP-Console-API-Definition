@@ -301,6 +301,32 @@
             "description" : "Forbidden"
           }
         }
+      },
+      "delete" : {
+        "tags" : [ "topic" ],
+        "summary" : "Delete the specified topic.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Topic deleted",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
       }
     },
     "/topic/rtot" : {
