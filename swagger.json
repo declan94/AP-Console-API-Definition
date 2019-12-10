@@ -124,7 +124,7 @@
           "in" : "query",
           "required" : true
         }, {
-          "name" : "topic",
+          "name" : "body",
           "in" : "body",
           "schema" : {
             "type" : "object",
@@ -418,6 +418,88 @@
           },
           "404" : {
             "description" : "Not found"
+          }
+        }
+      }
+    },
+    "/topics/{topic_id}/events" : {
+      "post" : {
+        "tags" : [ "topic" ],
+        "summary" : "Create an Event for specified Topic.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "name" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Event created"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/topics/{topic_id}/events/{event_name}" : {
+      "patch" : {
+        "tags" : [ "topic" ],
+        "summary" : "Partially update an event",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "event_name",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Event updated"
+          },
+          "403" : {
+            "description" : "Forbidden"
           }
         }
       }
