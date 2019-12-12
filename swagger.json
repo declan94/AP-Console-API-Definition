@@ -13,6 +13,7 @@
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
+  "host" : "ec2-35-170-131-54.compute-1.amazonaws.com",
   "basePath" : "/api/v2",
   "tags" : [ {
     "name" : "production",
