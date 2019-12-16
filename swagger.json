@@ -252,7 +252,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'.",
+        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'status' suppresses other modifications, and 'integration_test_status' suppresses other modifications except for 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
