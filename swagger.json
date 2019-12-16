@@ -822,29 +822,11 @@
           "in" : "path",
           "type" : "string"
         }, {
-          "name" : "cases",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
-        }, {
-          "name" : "case_summary",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
-        }, {
-          "name" : "audience",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
-        }, {
-          "name" : "extra_info",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
+          "name" : "fields",
+          "required" : true,
+          "in" : "path",
+          "description" : "Comma separated, possible values are 'cases', 'case_summary', 'audinece', 'extra_info' and 'control_group'.",
+          "type" : "string"
         } ],
         "responses" : {
           "200" : {
@@ -878,29 +860,11 @@
           "in" : "query",
           "type" : "string"
         }, {
-          "name" : "cases",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
-        }, {
-          "name" : "case_summary",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
-        }, {
-          "name" : "audience",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
-        }, {
-          "name" : "extra_info",
-          "required" : false,
-          "in" : "query",
-          "type" : "boolean",
-          "default" : false
+          "name" : "fields",
+          "required" : true,
+          "in" : "path",
+          "description" : "Comma separated, possible values are 'cases', 'case_summary', 'audinece', 'extra_info' and 'control_group'.",
+          "type" : "string"
         } ],
         "responses" : {
           "200" : {
