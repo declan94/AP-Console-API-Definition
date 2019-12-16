@@ -843,6 +843,50 @@
           }
         }
       },
+      "post" : {
+        "tags" : [ "testset" ],
+        "summary" : "Creates a Testset",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "required" : true,
+          "in" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Testset created",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "testset_id" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      },
       "patch" : {
         "tags" : [ "testset" ],
         "summary" : "Partially update a testet. 'status' suppresses other modifications, and 'autotest_conditions' superresses other modifications and is superressed by 'status'",
@@ -873,6 +917,38 @@
         "responses" : {
           "200" : {
             "description" : "Testset updated"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "testset" ],
+        "summary" : "Deletes a Testset.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Testset deleted"
           },
           "403" : {
             "description" : "Forbidden"
