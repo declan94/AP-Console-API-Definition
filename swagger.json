@@ -252,7 +252,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'status' suppresses other modifications, and 'integration_test_status' suppresses other modifications except for 'status'.",
+        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'status' suppresses other modifications, and 'integration_test_status' suppresses other modifications and is supperessed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -842,6 +842,45 @@
             "description" : "Not Found"
           }
         }
+      },
+      "patch" : {
+        "tags" : [ "testset" ],
+        "summary" : "Partially update a testet. 'status' suppresses other modifications, and 'autotest_conditions' superresses other modifications and is superressed by 'status'",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "required" : true,
+          "in" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Testset updated"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
       }
     },
     "/testsets" : {
@@ -949,45 +988,6 @@
           },
           "403" : {
             "description" : "Forbbiden"
-          },
-          "404" : {
-            "description" : "Not found"
-          }
-        }
-      }
-    },
-    "/testsets/rtot_popup/{testset_id}/integration_test" : {
-      "get" : {
-        "tags" : [ "rtot_popup", "testset" ],
-        "summary" : "Query integration result of specified testset_id belonging to the RTOT topic with specified topic_id",
-        "parameters" : [ {
-          "name" : "autopilot_id",
-          "in" : "query",
-          "description" : "autopilot id",
-          "required" : true,
-          "type" : "integer"
-        }, {
-          "name" : "topic_id",
-          "in" : "query",
-          "description" : "topic id",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "testset_id",
-          "in" : "path",
-          "description" : "testset id",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Integreation test result found",
-            "schema" : {
-              "type" : "object"
-            }
-          },
-          "403" : {
-            "description" : "Forbidden"
           },
           "404" : {
             "description" : "Not found"
