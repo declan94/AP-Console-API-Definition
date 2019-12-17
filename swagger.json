@@ -1111,6 +1111,46 @@
             "description" : "Forbidden"
           }
         }
+      },
+      "post" : {
+        "summary" : "Create an audience",
+        "tags" : [ "audience" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "autopilot_id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "path",
+          "name" : "audience_id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Audience found",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "audience_id" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
       }
     },
     "/audiences/{audience_id}" : {
@@ -1118,6 +1158,11 @@
         "summary" : "Get specific audience",
         "tags" : [ "audience" ],
         "parameters" : [ {
+          "in" : "query",
+          "name" : "autopilot_id",
+          "required" : true,
+          "type" : "integer"
+        }, {
           "in" : "path",
           "name" : "audience_id",
           "required" : true,
@@ -1148,6 +1193,11 @@
         "description" : "Note that when `archived` is set, other fields should NOT be set. We only do archive or unarchive operation on this audience in this case.",
         "tags" : [ "audience" ],
         "parameters" : [ {
+          "in" : "query",
+          "name" : "autopilot_id",
+          "required" : true,
+          "type" : "integer"
+        }, {
           "in" : "path",
           "name" : "audience_id",
           "required" : true,
