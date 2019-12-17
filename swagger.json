@@ -1232,6 +1232,35 @@
             }
           }
         }
+      },
+      "delete" : {
+        "summary" : "Delete an audience",
+        "tags" : [ "audience" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "autopilot_id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "path",
+          "name" : "audience_id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Audiences Deleted",
+            "schema" : {
+              "$ref" : "#/definitions/AudienceBrief"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "descripiton" : "Not Found"
+          }
+        }
       }
     }
   },
