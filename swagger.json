@@ -1134,7 +1134,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Audience found",
+            "description" : "Audience created",
             "schema" : {
               "type" : "object",
               "properties" : {
