@@ -881,7 +881,7 @@
       },
       "patch" : {
         "tags" : [ "testset" ],
-        "summary" : "Partially updates a testet. Not all of the supported operations can be done within a request,  'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "summary" : "Partially updates a testet. Not all of the supported operations can be done within the same request,  'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1176,7 +1176,7 @@
     "/cases/{case_id}" : {
       "patch" : {
         "tags" : [ "case", "text_rtot" ],
-        "summary" : "Partially updates a Case. For a RTOT Popup topic, changing Case status, changing Case integration test status and renaming ViewCase are supported; for a Text RTOT Set, only changing Case status is supported; for an ordinary testset, changing Case status and renaming ViewCase are supported. Not all of the supported operations can be done within a request, 'status' suppresses other modifications, and  'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "summary" : "Partially updates a Case. For a RTOT Popup topic, changing Case status, changing Case integration test status and renaming ViewCase are supported; for a Text RTOT Set, only changing Case status is supported; for an ordinary testset, changing Case status and renaming ViewCase are supported. Not all of the supported operations can be done within the same request, 'status' suppresses other modifications, and  'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
