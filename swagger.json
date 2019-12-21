@@ -1268,7 +1268,7 @@
     "/text_rtot/tests" : {
       "get" : {
         "tags" : [ "text_rtot" ],
-        "summary" : "Query TextRTOT supported topic",
+        "summary" : "Gets Text RTOT Tests.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1284,11 +1284,47 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Test found",
+            "description" : "Tests found",
             "schema" : {
               "type" : "array",
               "items" : {
                 "type" : "object"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbbiden"
+          },
+          "404" : {
+            "description" : "Not found"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "text_rtot" ],
+        "summary" : "Creates a Text RTOT Test",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilt id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "query",
+          "description" : "topic id of a topic which supports TextRTOT",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Text RTOT Test Created",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "tr_test_id" : {
+                  "type" : "string"
+                }
               }
             }
           },
