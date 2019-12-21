@@ -881,7 +881,7 @@
       },
       "patch" : {
         "tags" : [ "testset" ],
-        "summary" : "Partially update a testet. 'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "summary" : "Partially update a testet. Not all of the supported operations can be done within a request,  'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1110,7 +1110,7 @@
         }
       },
       "post" : {
-        "tags" : [ "case" ],
+        "tags" : [ "case", "text_rtot" ],
         "summary" : "Currently only supports Case creation for a Text Rtot Set.",
         "parameters" : [ {
           "name" : "autopilot_id",
@@ -1165,6 +1165,20 @@
             "description" : "Not Found"
           }
         }
+      }
+    },
+    "/cases/{case_id}" : {
+      "patch" : {
+        "tags" : [ "case" ],
+        "summary" : "Partially updates a Case. For a RTOT Popup topic, changing Case status, changing Case integration test status and renaming View Case are supported; for a Text RTOT Set, only changing Case status is supported; for an ordinary testset, changing Case status and renaming Case or ViewCase (if case_id is started with 'vcase-') are supported. Not all of the supported operations can be done within a request, 'status' suppresses other modifications, and  'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : null
+        } ]
       }
     },
     "/text_rtot/tests" : {
