@@ -1176,7 +1176,7 @@
     "/cases/{case_id}" : {
       "patch" : {
         "tags" : [ "case" ],
-        "summary" : "Partially updates a Case. For a RTOT Popup topic, changing Case status, changing Case integration test status and renaming View Case are supported; for a Text RTOT Set, only changing Case status is supported; for an ordinary testset, changing Case status and renaming Case or ViewCase (if case_id is started with 'vcase-') are supported. Not all of the supported operations can be done within a request, 'status' suppresses other modifications, and  'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "summary" : "Partially updates a Case. For a RTOT Popup topic, changing Case status, changing Case integration test status and renaming ViewCase are supported; for a Text RTOT Set, only changing Case status is supported; for an ordinary testset, changing Case status and renaming ViewCase are supported. Not all of the supported operations can be done within a request, 'status' suppresses other modifications, and  'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1207,12 +1207,51 @@
           "name" : "case_id",
           "in" : "path",
           "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Case updated.",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
+          },
+          "404" : {
+            "description" : "Not Found."
+          },
+          "403" : {
+            "description" : "Forbidden."
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "case" ],
+        "summary" : "Deletes a Case. For a RTOT Popup Topic, deletes the corresponding ViewCase of the specified case_id; for an ordinary testset, deletes the specified Case or ViewCase (if case_id starts with 'vcase-'). Does not support deletion of Case for a Text RTOT Set.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "in" : "query",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "case_id",
+          "in" : "path",
+          "type" : "string",
           "required" : true,
           "description" : "A case_id or vcase_id."
         } ],
         "responses" : {
           "200" : {
-            "description" : "Case updated.",
+            "description" : "Case deleted.",
             "schema" : {
               "$ref" : "#/definitions/OperationSuccessFlag"
             }
