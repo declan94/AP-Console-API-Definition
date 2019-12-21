@@ -1216,6 +1216,12 @@
             "schema" : {
               "$ref" : "#/definitions/OperationSuccessFlag"
             }
+          },
+          "404" : {
+            "description" : "Not Found."
+          },
+          "403" : {
+            "description" : "Forbidden."
           }
         }
       }
