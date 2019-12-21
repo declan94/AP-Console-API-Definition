@@ -993,7 +993,7 @@
       },
       "post" : {
         "tags" : [ "testset" ],
-        "summary" : "Creates a Testset",
+        "summary" : "Creates a Testset. The API dectect the topic type and then takes corresponding actions, please provide proper body parameters according to the topic tpye (RTOT Popup or ordinary).",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1032,6 +1032,9 @@
           },
           "403" : {
             "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Topic not found"
           }
         }
       }
