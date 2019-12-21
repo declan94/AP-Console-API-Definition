@@ -1074,6 +1074,42 @@
         }
       }
     },
+    "/cases" : {
+      "get" : {
+        "tags" : [ "case" ],
+        "summary" : "Currently only used on ordinary Test Results page.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Case list found",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
     "/text_rtot/tests" : {
       "get" : {
         "tags" : [ "text_rtot" ],
