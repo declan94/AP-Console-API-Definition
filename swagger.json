@@ -1077,7 +1077,7 @@
     "/cases" : {
       "get" : {
         "tags" : [ "case" ],
-        "summary" : "Currently only used on ordinary Test Results page.",
+        "summary" : "Currently only supports usage on ordinary Test Results page.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1106,6 +1106,63 @@
           },
           "403" : {
             "description" : "Forbidden"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "case" ],
+        "summary" : "Currently only supports Case creation for a Text Rtot Set.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "tr_test_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "testset_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "description" : "Access token of a Text Rtot Test, requests from the shared page should provide this token."
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Case created",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "case_id" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
           }
         }
       }
@@ -1535,6 +1592,9 @@
           }
         }
       }
+    },
+    "Case" : {
+      "type" : "object"
     },
     "Variation" : {
       "type" : "object"
