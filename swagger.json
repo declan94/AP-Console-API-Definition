@@ -167,7 +167,7 @@
     "/topics/text_rtot" : {
       "get" : {
         "tags" : [ "topic", "text_rtot" ],
-        "summary" : "Query topics that support TextRTOT",
+        "summary" : "Gets topics that support TextRTOT",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -194,7 +194,7 @@
     "/topics/text_rtot/{topic_id}" : {
       "get" : {
         "tags" : [ "topic", "text_rtot" ],
-        "summary" : "Query topics that support TextRTOT",
+        "summary" : "Gets topics that support TextRTOT",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -224,7 +224,7 @@
     "/topics/{topic_id}" : {
       "get" : {
         "tags" : [ "topic" ],
-        "summary" : "Get specific topic's detail",
+        "summary" : "Gets specific topic's detail",
         "parameters" : [ {
           "name" : "topic_id",
           "in" : "path",
@@ -308,7 +308,7 @@
       },
       "delete" : {
         "tags" : [ "topic" ],
-        "summary" : "Delete the specified topic.",
+        "summary" : "Deletes the specified topic.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -336,7 +336,7 @@
     "/topic/rtot" : {
       "get" : {
         "tags" : [ "topic" ],
-        "summary" : "Get RTOT Topic",
+        "summary" : "Gets RTOT Topic",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -366,7 +366,7 @@
     "/topic/strategy/interval" : {
       "get" : {
         "tags" : [ "topic" ],
-        "summary" : "Get Interval Strategy Topic",
+        "summary" : "Gets Interval Strategy Topic",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -396,7 +396,7 @@
     "/topic/strategy/action" : {
       "get" : {
         "tags" : [ "topic" ],
-        "summary" : "Get Action Strategy Topic",
+        "summary" : "Gets Action Strategy Topic",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -426,7 +426,7 @@
     "/topics/{topic_id}/events" : {
       "post" : {
         "tags" : [ "topic" ],
-        "summary" : "Create an Event for specified Topic.",
+        "summary" : "Creates an Event for specified Topic.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -466,7 +466,7 @@
     "/topics/{topic_id}/events/{event_name}" : {
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially update an event",
+        "summary" : "Partially updates an event",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -536,7 +536,7 @@
     "/topics/{topic_id}/variations" : {
       "post" : {
         "tags" : [ "topic" ],
-        "summary" : "Create a Variation for specified Topic.",
+        "summary" : "Creates a Variation for specified Topic.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -580,7 +580,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Apply variations of a Text RTOT Case to the topic, only update the variations of same lacale with the case, no side effects to unrelated variations.",
+        "summary" : "Applies variations of a Text RTOT Case to the topic, only update the variations of same lacale with the case, no side effects to unrelated variations.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -618,7 +618,7 @@
     "/topics/{topic_id}/variations/{variation_name}" : {
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially update a Variation",
+        "summary" : "Partially updates a Variation",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -658,7 +658,7 @@
       },
       "delete" : {
         "tags" : [ "topic" ],
-        "summary" : "Delete a Variation",
+        "summary" : "Deletes a Variation",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -688,7 +688,7 @@
     "/topics/{topic_id}/goals" : {
       "post" : {
         "tags" : [ "topic" ],
-        "summary" : "Create a Goal for specified Topic.",
+        "summary" : "Creates a Goal for specified Topic.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -728,7 +728,7 @@
     "/topics/{topic_id}/goals/{goal_name}" : {
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially update a Goal",
+        "summary" : "Partially updates a Goal",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -798,7 +798,7 @@
     "/rules" : {
       "get" : {
         "tags" : [ "rule" ],
-        "summary" : "Get Rule List for specified topic_ids and audience_ids",
+        "summary" : "Gets Rule List for specified topic_ids and audience_ids",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -840,7 +840,7 @@
     "/testset/{testset_id}" : {
       "get" : {
         "tags" : [ "testset" ],
-        "summary" : "Get a Testset for specified topic_id and testset_id",
+        "summary" : "Gets a Testset for specified topic_id and testset_id",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -881,7 +881,7 @@
       },
       "patch" : {
         "tags" : [ "testset" ],
-        "summary" : "Partially update a testet. Not all of the supported operations can be done within a request,  'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "summary" : "Partially updates a testet. Not all of the supported operations can be done within a request,  'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -960,7 +960,7 @@
     "/testsets" : {
       "get" : {
         "tags" : [ "testset" ],
-        "summary" : "Get Testsets for specified topic_id",
+        "summary" : "Gets Testsets for specified topic_id",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
