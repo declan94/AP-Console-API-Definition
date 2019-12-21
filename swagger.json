@@ -970,7 +970,7 @@
           "name" : "fields",
           "required" : true,
           "in" : "path",
-          "description" : "Comma separated, can be arbitrary combination of 'cases', 'case_summary', 'audinece', 'extra_info' and 'control_group'.",
+          "description" : "Comma separated, can be arbitrary combination of 'cases', 'case_summary', 'audinece', 'autotest', 'control_group' and 'integration_test' (for RTOT Popup topics only).",
           "type" : "string"
         } ],
         "responses" : {
