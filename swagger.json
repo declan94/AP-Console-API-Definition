@@ -920,7 +920,7 @@
       },
       "delete" : {
         "tags" : [ "testset" ],
-        "summary" : "Deletes a Testset.",
+        "summary" : "Deletes an ordinary Testset.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
