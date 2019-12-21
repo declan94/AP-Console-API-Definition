@@ -908,7 +908,10 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Testset updated"
+            "description" : "Testset updated",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
           },
           "403" : {
             "description" : "Forbidden"
@@ -940,7 +943,10 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Testset deleted"
+            "description" : "Testset deleted",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
           },
           "403" : {
             "description" : "Forbidden"
@@ -1177,8 +1183,41 @@
           "required" : true,
           "type" : "integer"
         }, {
-          "name" : null
-        } ]
+          "name" : "topic_id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "token",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Access token of a Text Rtot Test, requests from the shared page should provide this token."
+        }, {
+          "name" : "tr_test_id",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Required if parameter 'token' is provided (needed by finding the Text RTOT Set)."
+        }, {
+          "name" : "testset_id",
+          "in" : "query",
+          "type" : "string",
+          "required" : true,
+          "description" : "A testset_id or a Text RTOT Set's id."
+        }, {
+          "name" : "case_id",
+          "in" : "path",
+          "type" : "string",
+          "required" : true,
+          "description" : "A case_id or vcase_id."
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Case updated.",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
+          }
+        }
       }
     },
     "/text_rtot/tests" : {
@@ -1604,6 +1643,14 @@
           "items" : {
             "type" : "object"
           }
+        }
+      }
+    },
+    "OperationSuccessFlag" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "type" : "boolean"
         }
       }
     },
