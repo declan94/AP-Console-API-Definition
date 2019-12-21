@@ -577,6 +577,42 @@
             "description" : "Forbidden"
           }
         }
+      },
+      "patch" : {
+        "tags" : [ "topic" ],
+        "summary" : "Apply variations of a Text RTOT Case to the topic, only update the variations of same lacale with the case, no side effects to unrelated variations.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "testset_id" : {
+                "type" : "string",
+                "description" : "should be an id of TRSet"
+              },
+              "case_id" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Succeeded"
+          }
+        }
       }
     },
     "/topics/{topic_id}/variations/{variation_name}" : {
@@ -825,7 +861,7 @@
           "name" : "fields",
           "required" : true,
           "in" : "path",
-          "description" : "Comma separated, can be arbitrary combination of 'cases', 'case_summary', 'audinece', 'extra_info' and 'control_group'.",
+          "description" : "Comma separated, can be arbitrary combination of 'cases', 'case_summary', 'audinece', 'autotest', 'control_group' and 'integration_test' (for RTOT Popup topics only).",
           "type" : "string"
         } ],
         "responses" : {
