@@ -881,7 +881,7 @@
       },
       "patch" : {
         "tags" : [ "testset" ],
-        "summary" : "Partially update a testet. 'status' suppresses other modifications, and 'autotest_conditions' superresses other modifications and is superressed by 'status'",
+        "summary" : "Partially update a testet. 'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
