@@ -1498,6 +1498,52 @@
         }
       }
     },
+    "/text_rtot/sets/{testset_id}" : {
+      "get" : {
+        "tags" : [ "text_rtot" ],
+        "summary" : "Gets Text RTOT Set of a Text RTOT Test.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "tr_test_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "testset_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "token",
+          "type" : "string",
+          "in" : "query",
+          "description" : "Access token of a Text Rtot Test, requests from the shared page should provide this token."
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Text RTOT Set Found",
+            "schema" : {
+              "$ref" : "#/definitions/TRSet"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
     "/audiences" : {
       "get" : {
         "tags" : [ "audience" ],
