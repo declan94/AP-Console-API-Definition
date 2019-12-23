@@ -194,7 +194,7 @@
     "/topics/text_rtot/{topic_id}" : {
       "get" : {
         "tags" : [ "topic", "text_rtot" ],
-        "summary" : "Gets topics that support TextRTOT",
+        "summary" : "Gets a topic that support TextRTOT",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
