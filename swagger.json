@@ -1595,7 +1595,53 @@
       },
       "patch" : {
         "tags" : [ "text_rtot" ],
-        "summary" : "Partially updates a Text RTOT Set. Not all of the supported operations can be done within the same request, 'status' suppresses other modifications."
+        "summary" : "Partially updates a Text RTOT Set. Not all of the supported operations can be done within the same request, 'status' suppresses other modifications.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "tr_test_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "testset_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "token",
+          "type" : "string",
+          "in" : "query",
+          "description" : "Access token of a Text Rtot Test, requests from the shared page should provide this token."
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Text RTOT Set updated",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
       }
     },
     "/audiences" : {
