@@ -1337,6 +1337,45 @@
         }
       }
     },
+    "/text_rtot/tests/{tr_test_id}" : {
+      "patch" : {
+        "summary" : "Partially updates a Text RTOT Test",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "tr_test_id",
+          "type" : "string",
+          "in" : "path",
+          "required" : true
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Text RTOT Test updated"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "descripiton" : "Not Found"
+          }
+        }
+      }
+    },
     "/audiences" : {
       "get" : {
         "tags" : [ "audience" ],
