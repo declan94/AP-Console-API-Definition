@@ -1339,6 +1339,7 @@
     },
     "/text_rtot/tests/{tr_test_id}" : {
       "patch" : {
+        "tags" : [ "text_rtot" ],
         "summary" : "Partially updates a Text RTOT Test",
         "parameters" : [ {
           "name" : "autopilot_id",
