@@ -1523,11 +1523,13 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Text RTOT Sets Found",
+            "description" : "Text RTOT Set Created",
             "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/TRSet"
+              "type" : "object",
+              "properties" : {
+                "testset_id" : {
+                  "type" : "string"
+                }
               }
             }
           },
