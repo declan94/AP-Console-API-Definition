@@ -1366,7 +1366,10 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Text RTOT Test updated"
+            "description" : "Text RTOT Test updated",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
           },
           "403" : {
             "description" : "Forbidden"
@@ -1438,7 +1441,10 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Token has been revoked"
+            "description" : "Token has been revoked",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
           },
           "403" : {
             "description" : "Forbidden"
@@ -1586,6 +1592,10 @@
             "description" : "Not Found"
           }
         }
+      },
+      "patch" : {
+        "tags" : [ "text_rtot" ],
+        "summary" : "Partially updates a Text RTOT Set. Not all of the supported operations can be done within the same request, 'status' suppresses other modifications."
       }
     },
     "/audiences" : {
