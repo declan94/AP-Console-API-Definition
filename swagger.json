@@ -579,7 +579,7 @@
         }
       },
       "patch" : {
-        "tags" : [ "topic" ],
+        "tags" : [ "topic", "case" ],
         "summary" : "Applies variations of a Text RTOT Case to the topic, only update the variations of same lacale with the case, no side effects to unrelated variations.",
         "parameters" : [ {
           "name" : "autopilot_id",
@@ -1452,7 +1452,7 @@
     "/text_rtot/sets" : {
       "get" : {
         "tags" : [ "text_rtot" ],
-        "summary" : "Gets Text RTOT Sets of a Text RTOT Test.",
+        "summary" : "Gets Text RTOT Sets.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -1496,12 +1496,54 @@
             "description" : "Not Found"
           }
         }
+      },
+      "post" : {
+        "tags" : [ "text_rtot" ],
+        "summary" : "Creates a Text RTOT Set.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "tr_test_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "token",
+          "type" : "string",
+          "in" : "query",
+          "description" : "Access token of a Text Rtot Test, requests from the shared page should provide this token."
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Text RTOT Sets Found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/TRSet"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
       }
     },
     "/text_rtot/sets/{testset_id}" : {
       "get" : {
         "tags" : [ "text_rtot" ],
-        "summary" : "Gets Text RTOT Set of a Text RTOT Test.",
+        "summary" : "Gets specified Text RTOT Set.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
