@@ -881,7 +881,7 @@
       },
       "patch" : {
         "tags" : [ "testset" ],
-        "summary" : "Partially updates a testet. Not all of the supported operations can be done within the same request,  'status' suppresses other modifications, and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'.",
+        "summary" : "Partially updates a testet. Not all of the supported operations can be done within the same request,  'status' suppresses other modifications; and 'autotest_conditions' (for an ordinary testset) or 'integration_test_status' (for a testset of RTOT Popup topic) superresses other modifications and is superressed by 'status'; 'clear_integration_data' (boolean, for a testset of RTOT Popup topic, should always be True if provided) suppresses other modifications and is suppressed by 'status' or 'integration_test_status'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
