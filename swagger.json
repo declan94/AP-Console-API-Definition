@@ -1442,6 +1442,58 @@
           },
           "403" : {
             "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    },
+    "/text_rtot/sets" : {
+      "get" : {
+        "tags" : [ "text_rtot" ],
+        "summary" : "Gets Text RTOT Sets of a Text RTOT Test.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "type" : "integer",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "topic_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "tr_test_id",
+          "type" : "string",
+          "in" : "query",
+          "required" : true
+        }, {
+          "name" : "token",
+          "type" : "string",
+          "in" : "query",
+          "description" : "Access token of a Text Rtot Test, requests from the shared page should provide this token."
+        }, {
+          "name" : "language",
+          "type" : "string",
+          "in" : "query",
+          "description" : "Filters result by language if provided."
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Text RTOT Sets Found",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/TRSet"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden"
+          },
+          "404" : {
+            "description" : "Not Found"
           }
         }
       }
@@ -1843,6 +1895,9 @@
           "type" : "boolean"
         }
       }
+    },
+    "TRSet" : {
+      "type" : "object"
     },
     "Case" : {
       "type" : "object"
