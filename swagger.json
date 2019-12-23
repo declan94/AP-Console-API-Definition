@@ -1371,7 +1371,7 @@
             "description" : "Forbidden"
           },
           "404" : {
-            "descripiton" : "Not Found"
+            "description" : "Not Found"
           }
         }
       }
