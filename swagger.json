@@ -604,6 +604,9 @@
               },
               "case_id" : {
                 "type" : "string"
+              },
+              "tr_test_id" : {
+                "type" : "string"
               }
             }
           }
