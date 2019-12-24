@@ -293,12 +293,7 @@
           "200" : {
             "description" : "Topic updated",
             "schema" : {
-              "type" : "object",
-              "properties" : {
-                "topic_id" : {
-                  "type" : "string"
-                }
-              }
+              "$ref" : "#/definitions/OperationSuccessFlag"
             }
           },
           "403" : {
@@ -324,7 +319,7 @@
           "200" : {
             "description" : "Topic deleted",
             "schema" : {
-              "type" : "object"
+              "$ref" : "#/definitions/OperationSuccessFlag"
             }
           },
           "403" : {
