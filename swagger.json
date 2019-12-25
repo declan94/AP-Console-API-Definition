@@ -252,7 +252,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'arvhived' suppresses other modifications, and 'integration_test_status' suppresses other modifications and is supperessed by 'archived'.",
+        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'archived' suppresses other modifications, and 'integration_test_status' suppresses other modifications and is supperessed by 'archived'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
