@@ -285,7 +285,8 @@
                 "description" : "Should always be True, or a 400 Error will be thrown"
               },
               "integration_test_status" : {
-                "type" : "string"
+                "type" : "string",
+                "description" : "Should always be 'passed'"
               }
             }
           }
