@@ -252,7 +252,7 @@
       },
       "patch" : {
         "tags" : [ "topic" ],
-        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'status' suppresses other modifications, and 'integration_test_status' suppresses other modifications and is supperessed by 'status'.",
+        "summary" : "Partially updates a topic. Note that the `status` can only be changed to 'archived', and the `integration_test_status` can only be changed to 'passed'. 'arvhived' suppresses other modifications, and 'integration_test_status' suppresses other modifications and is supperessed by 'archived'.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "type" : "integer",
@@ -280,8 +280,9 @@
               "duration" : {
                 "type" : "string"
               },
-              "status" : {
-                "type" : "string"
+              "archived" : {
+                "type" : "boolean",
+                "description" : "Should always be True, or a 400 Error will be thrown"
               },
               "integration_test_status" : {
                 "type" : "string"
@@ -1046,7 +1047,7 @@
     "/segments" : {
       "get" : {
         "tags" : [ "segment" ],
-        "summary" : "Get Segments for specified topic_id",
+        "summary" : "Gets Segments for specified topic_id",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1076,6 +1077,78 @@
             "description" : "Not Found"
           }
         }
+      },
+      "post" : {
+        "tags" : [ "segment" ],
+        "summary" : "Creates a segment",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SegmentOnCreation"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Segment created",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "segment_id" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      }
+    },
+    "/segment/{segment_id}" : {
+      "patch" : {
+        "tags" : [ "segment" ],
+        "summary" : "Partially update a Segment. Not all of the supported operations can be done within the same request, 'status' suppresses other modifications.",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "segment_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SegmentOnCreation"
+          }
+        } ]
       }
     },
     "/cases" : {
@@ -2051,6 +2124,34 @@
     },
     "Segment" : {
       "type" : "object"
+    },
+    "SegmentOnCreation" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "content" : {
+          "type" : "object"
+        }
+      }
+    },
+    "SegmentOnUpdate" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "content" : {
+          "type" : "object"
+        }
+      }
     },
     "Testset" : {
       "type" : "object"
