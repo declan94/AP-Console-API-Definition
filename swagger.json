@@ -286,7 +286,7 @@
               },
               "integration_test_status" : {
                 "type" : "string",
-                "description" : "Should always be 'passed'"
+                "description" : "Should always be 'passed', any other value will be ignored"
               }
             }
           }
