@@ -1125,7 +1125,7 @@
     "/segment/{segment_id}" : {
       "patch" : {
         "tags" : [ "segment" ],
-        "summary" : "Partially update a Segment. Not all of the supported operations can be done within the same request, 'status' suppresses other modifications.",
+        "summary" : "Partially update a Segment. Not all of the supported operations can be done within the same request, 'archived' suppresses other modifications.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
@@ -1147,9 +1147,58 @@
           "in" : "body",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/SegmentOnCreation"
+            "$ref" : "#/definitions/SegmentOnUpdate"
           }
-        } ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Segment updated",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "segment" ],
+        "summary" : "Deletes a Segment",
+        "parameters" : [ {
+          "name" : "autopilot_id",
+          "in" : "query",
+          "description" : "autopilot id",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "topic_id",
+          "required" : true,
+          "in" : "query",
+          "type" : "string"
+        }, {
+          "name" : "segment_id",
+          "required" : true,
+          "in" : "path",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Segment deleted",
+            "schema" : {
+              "$ref" : "#/definitions/OperationSuccessFlag"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "403" : {
+            "description" : "Forbidden"
+          }
+        }
       }
     },
     "/cases" : {
@@ -2149,8 +2198,9 @@
         "description" : {
           "type" : "string"
         },
-        "content" : {
-          "type" : "object"
+        "archived" : {
+          "type" : "boolean",
+          "description" : "Should always be True, or a 400 Error will be Thrown"
         }
       }
     },
