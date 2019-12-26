@@ -2199,8 +2199,7 @@
           "type" : "string"
         },
         "archived" : {
-          "type" : "boolean",
-          "description" : "Should always be True, or a 400 Error will be Thrown"
+          "type" : "boolean"
         }
       }
     },
