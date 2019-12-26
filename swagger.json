@@ -1125,7 +1125,7 @@
     "/segment/{segment_id}" : {
       "patch" : {
         "tags" : [ "segment" ],
-        "summary" : "Partially update a Segment. Not all of the supported operations can be done within the same request, 'archived' suppresses other modifications.",
+        "summary" : "Partially update a Segment. Not all of the supported operations can be done within the same request, changing 'archived' suppresses other modifications.",
         "parameters" : [ {
           "name" : "autopilot_id",
           "in" : "query",
