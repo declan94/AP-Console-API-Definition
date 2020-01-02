@@ -231,6 +231,12 @@
           "description" : "topic id",
           "required" : true,
           "type" : "string"
+        }, {
+          "name" : "autopilot_ie",
+          "in" : "query",
+          "description" : "autopilot_id",
+          "required" : true,
+          "type" : "string"
         } ],
         "responses" : {
           "200" : {
