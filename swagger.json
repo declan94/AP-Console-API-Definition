@@ -1962,6 +1962,17 @@
           }
         }
       }
+    },
+    "/app_groups" : {
+      "get" : {
+        "tags" : [ "app_group" ],
+        "parameters" : {
+          "name" : "fields",
+          "required" : false,
+          "description" : null,
+          "type" : "string"
+        }
+      }
     }
   },
   "securityDefinitions" : {
